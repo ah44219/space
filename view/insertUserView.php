@@ -8,25 +8,17 @@ if(isset($_POST['register'])){
         $lastname=$_POST['lastname'];
         $phone=$_POST['phone'];
         $email=$_POST['email'];
-        $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
+        $passwordi=password_hash($_POST['passwordi'], PASSWORD_BCRYPT);
         $view=new insertView();
-        $view->insertUser($firstname,$lastname,$phone,$email,$password);
-
+        $view->insertUser($firstname,$lastname,$phone,$email,$passwordi);
 }
 
 class insertView{
-    public function insertUser($firstname,$lastname,$phone,$email,$password){
-        if(!isset($firstname) || empty($firstname) || !isset($lastname) || empty($lastname) || !isset($phone) || empty($phone) ||
-         !isset($email) || empty($email) || !isset($password) || empty($password)){
+    public function insertUser($firstname,$lastname,$phone,$email,$passwordi){
+        $controller=new userController();
+        $response=$controller->insertUser($firstname,$lastname,$phone,$email,$passwordi);
 
-            header("Location: ../login/login.php"); 
-            exit();
-
-        }else{
-            $controller=new userController();
-        $response=$controller->insertUser($firstname,$lastname,$phone,$email,$password);
-
-        if($response){
+        if($response ){
             ?>
             <h1>U regjistrua me sukses</h1>
             <?
@@ -34,13 +26,8 @@ class insertView{
             ?>
             <h1>Nuk u regjistrua me sukses!</h1>
             <?
-            header("Location: ../index.php"); 
-            exit();
-        }
         }
     }
 }
-
-        
 
 ?>
