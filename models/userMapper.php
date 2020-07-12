@@ -13,9 +13,9 @@ class userMapper{
         $this->user=$user;
     }
 
-    public function Insert($firstname,$lastname,$phone,$email,$password){
+    public function Insert($firstname,$lastname,$phone,$email,$passwordi){
         
-            $sql="INSERT INTO users (firstname,lastname,phone,email,password) VALUES (:firstname,:lastname,:phone,:email,:password)";
+            $sql="INSERT INTO users (firstname,lastname,phone,email,passwordi) VALUES (:firstname,:lastname,:phone,:email,:passwordi)";
         
             $statement=$this->connection->prepare($sql);
     
@@ -23,7 +23,7 @@ class userMapper{
             $statement->bindParam(":lastname",$lastname);
             $statement->bindParam(":phone",$phone);
             $statement->bindParam(":email",$email);
-            $statement->bindParam(":password",$password);
+            $statement->bindParam(":passwordi",$passwordi);
     
             $statement->execute();
     }
