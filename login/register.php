@@ -63,8 +63,8 @@
                 <input type="text" placeholder="Last Name" name="lastname">
                 <input type="number" placeholder="Phone" name ="phone">
                 <input type="email" placeholder="Email address" name="email">
-                <input type="password" placeholder="Password" name="password">
-                <input type="password" placeholder="Confirm Password" name="password2">
+                <input type="password" placeholder="Password" name="passwordi">
+                <input type="password" placeholder="Confirm Password" name="passwordi2">
                 <input type="checkbox" name="emails">
                 <label for="emails">Yes , I want to recieve emails from Space2Create</label>
                 <input id="box"type="checkbox" name="agree">
