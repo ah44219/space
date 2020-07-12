@@ -12,12 +12,10 @@ class connection{
 
    public function getConnection(){
       try{
-         $connection = new PDO("mysql:host=$servername;dbname=$dbname",$this->user,$this->password);
-         $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERR_MODE_EXCEPTION);
-         return "sucess";
+         $connection = new PDO("mysql:host=$this->servername;dbname=$this->dbname",$this->user,$this->password);
+         $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
       }catch(PDOException $e){
          echo $e->getMessage();
-         return "GABIM";
       }
       return $connection;
    }

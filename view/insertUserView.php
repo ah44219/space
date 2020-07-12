@@ -16,7 +16,14 @@ if(isset($_POST['register'])){
 
 class insertView{
     public function insertUser($firstname,$lastname,$phone,$email,$password){
-        $controller=new userController();
+        if(!isset($firstname) || empty($firstname) || !isset($lastname) || empty($lastname) || !isset($phone) || empty($phone) ||
+         !isset($email) || empty($email) || !isset($password) || empty($password)){
+
+            header("Location: ../login/login.php"); 
+            exit();
+
+        }else{
+            $controller=new userController();
         $response=$controller->insertUser($firstname,$lastname,$phone,$email,$password);
 
         if($response){
@@ -27,8 +34,13 @@ class insertView{
             ?>
             <h1>Nuk u regjistrua me sukses!</h1>
             <?
+            header("Location: ../index.php"); 
+            exit();
+        }
         }
     }
 }
+
+        
 
 ?>
